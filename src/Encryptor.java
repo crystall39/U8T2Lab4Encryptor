@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Encryptor
 {
     /** A two-dimensional array of single-character strings, instantiated in the constructor */
@@ -127,30 +129,49 @@ public class Encryptor
         String str = "";
         int maxNumber = numCols * numRows;
         int times = 0;
-        boolean keepGoing = true;
-        String shortMessage = encryptedMessage.substring(times * maxNumber, (times + 1) * maxNumber);
 
-        // put it into letterblock column first, then row
-        int index = 0;
-        for (int i = 0; i < numCols; i++) // cols
+
+        while (times * maxNumber < encryptedMessage.length())
         {
-            for (int j = 0; j < numRows; j++) // rows
+            String shortMessage = "";
+            if ((times + 1) * maxNumber < encryptedMessage.length())
             {
-                if (index != shortMessage.length())
+                shortMessage = encryptedMessage.substring(times * maxNumber, (times + 1) * maxNumber);
+            }
+            else
+            {
+                shortMessage = encryptedMessage.substring(times * maxNumber);
+            }
+
+            // put it into letterblock column first, then row
+            int index = 0;
+            for (int i = 0; i < numCols; i++) // cols
+            {
+                for (int j = 0; j < numRows; j++) // rows
                 {
-                    letterBlock[j][i] = shortMessage.substring(index, index + 1);
-                    index++;
+                    if (index != shortMessage.length())
+                    {
+                        letterBlock[j][i] = shortMessage.substring(index, index + 1);
+                        index++;
+                    }
                 }
             }
-        }
-        // put the word into str
-        for (String[] rows : letterBlock)
-        {
-            for (String item : rows)
+            // put the word into str
+            for (String[] rows : letterBlock)
             {
-                str += item;
+                for (String item : rows)
+                {
+                    str += item;
+                }
             }
+            times++;
         }
-        return str; // stub value
+
+        while (str.substring(str.length() - 1).equals("A"))
+        {
+            str = str.substring(0, str.length() - 1);
+        }
+
+        return str;
     }
 }
