@@ -129,7 +129,7 @@ public class Encryptor
         int times = 0;
         boolean keepGoing = true;
         String shortMessage = encryptedMessage.substring(times * maxNumber, (times + 1) * maxNumber);
-
+        
         // put it into letterblock column first, then row
         int index = 0;
         for (int i = 0; i < numCols; i++) // cols
