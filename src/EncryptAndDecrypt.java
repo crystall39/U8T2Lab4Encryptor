@@ -38,5 +38,13 @@ public class EncryptAndDecrypt
         Encryptor makeYourOwn1 = new Encryptor(4, 3);
         System.out.println(makeYourOwn1.encryptMessage("Never gonna give you up…Never gonna let you down…Haha, sorry…"));
         System.out.println();
+
+        Encryptor makeYourOwn2 = new Encryptor(8, 9); // Jacqueline's
+        System.out.println(makeYourOwn2.decryptMessage("Atdwien    on  Aleirgaatixst. nhfa h mceemn Tain iolonesnnti  n oe vbitco hwi edrt fddm rhwaerldueinaioip tgsncetyhl.kksio e s .nundH aAgte ehnA"));
+        System.out.println();
+
+        Encryptor makeYourOwn3 = new Encryptor(3, 5); // Jay Li's
+        System.out.println(makeYourOwn3.decryptMessage("I isMlnrl’.etMr BAtEPhS eTC  SAcA hAteAerAa?A"));
+        System.out.println();
     }
 }
